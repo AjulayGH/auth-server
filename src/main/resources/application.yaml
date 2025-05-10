@@ -1,0 +1,30 @@
+server:
+  port: 7082
+  servlet:
+    context-path: /auth
+
+spring:
+  application:
+    name: auth-server
+
+  security:
+    oauth2:
+      authorizationserver:
+        issuer: http://auth.civil-aviation.pro:7080/auth
+        client:
+          baeldung:
+            registration:
+              client-id: baeldung-confidential
+              client-secret: "{noop}secret"
+              client-name: Baeldung
+              client-authentication-methods:
+                - client_secret_basic
+              authorization-grant-types:
+                - authorization_code
+                - refresh_token
+              redirect-uris:
+                - http://civil-aviation.pro:7080/login/oauth2/code/baeldung-confidential-oidc
+                - http://civil-aviation.pro:7080/authorized
+              scopes:
+                - openid
+                - articles.read

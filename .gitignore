@@ -3,3 +3,7 @@
 /gradlew.bat
 /HELP.md
 /gradle/
+
+/build/
+
+.gradle/
